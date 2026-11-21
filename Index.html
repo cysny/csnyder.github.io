@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CRS Research Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Inter:wght@400..700&display=swap">
+<style>
+/* VOICE: warm, grown-up, encouraging; Smart Brevity headlines that state the takeaway.
+   IDEA: a research readout: each case study reads like a findings brief handed to leadership.
+   PICTURE: CRS signature soft circles bleeding off a plum hero, clustering like codes into themes.
+   COLOUR and TYPE: CRS brand: cream/sand grounds, plum bookends, terracotta + sage accents; Fraunces + Inter.
+   LAYOUT: plum hero, alternating cream/sand bands, 3-card insight rows, plum footer with contact. */
+:root{color-scheme:light dark;
+  --surface:light-dark(#F7F2EC,#2E2433);--surface-alt:light-dark(#EFE6DC,#3D3143);--card:light-dark(#FFFCF8,#3D3143);
+  --ink:light-dark(#2E2433,#F7F2EC);--muted:light-dark(#4A3F50,#E6DDE8);--plum:light-dark(#2E2433,#251C29);
+  --accent:#C8553D;--accent-text:light-dark(#A8432E,#F0A994);--sage:#7E9C88;--sage-text:light-dark(#4F6B5A,#A9C4B2);--blush:#E9B8A8;
+  --line:light-dark(#E2D6C9,#54465B);
+  --display:Fraunces,Georgia,serif;--sans:Inter,system-ui,sans-serif}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important}}
+body{margin:0;background:var(--surface);color:var(--ink);font:17px/1.6 var(--sans);overflow-x:clip}
+a{color:var(--accent-text)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.08;text-wrap:balance;margin:0}
+h2{font-size:clamp(30px,4vw,44px)}
+h3{font-size:22px;font-family:var(--sans);font-weight:700;line-height:1.25}
+p{margin:0 0 16px;max-width:68ch}
+.wrap{max-width:1240px;margin:0 auto}
+.band{padding:clamp(48px,6vw,96px) max(5vw,16px)}
+.alt{background:var(--surface-alt)}
+.ph{white-space:nowrap}
+.eyebrow{font-weight:600;font-size:15px;color:var(--accent-text);margin:0 0 12px}
+.eyebrow.sage{color:var(--sage-text)}
+.lead{font-size:clamp(18px,2vw,21px);color:var(--muted)}
+.take{font-weight:700;margin-top:32px;padding-top:24px;border-top:1px solid var(--line)}
+
+/* nav */
+nav{position:sticky;top:0;z-index:5;background:var(--plum);color:#F7F2EC}
+nav .wrap{display:flex;align-items:center;gap:24px;padding:10px max(5vw,16px);flex-wrap:wrap}
+nav .mark{font-family:var(--display);font-size:22px;color:#F7F2EC;text-decoration:none;margin-right:auto}
+nav .links{display:flex;gap:4px;flex-wrap:wrap}
+nav .links a{color:#F7F2EC;text-decoration:none;font-size:15px;padding:12px 10px;min-height:44px;display:inline-flex;align-items:center;border-radius:999px}
+nav .links a:hover{color:var(--blush)}
+@media(max-width:600px){nav .links a{padding:10px 8px;font-size:14px}}
+
+/* hero */
+.hero{background:var(--plum);color:#F7F2EC;position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:48px;align-items:center;padding:clamp(56px,8vw,112px) max(5vw,16px);position:relative;z-index:1}
+.hero .eyebrow{color:var(--blush)}
+.hero h1{font-size:clamp(40px,6vw,72px);line-height:1.04}
+.hero .lead{color:#E6DDE8;margin-top:24px}
+.hero .name{font-family:var(--display);font-size:24px;margin:0 0 8px}
+.cta{display:flex;gap:16px;flex-wrap:wrap;margin-top:32px}
+.btn{display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:999px;font-weight:600;text-decoration:none;font-size:16px}
+.btn.primary{background:var(--accent);color:#FFFCF8}
+.btn.ghost{border:2px solid #E6DDE8;color:#F7F2EC}
+.btn:hover{filter:brightness(1.08)}
+.fig{position:relative;min-height:380px}
+.fig svg{position:absolute;inset:0;width:100%;height:100%}
+.orb{transform-origin:center;animation:drift 9s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate(6px,-8px)}}
+@media(max-width:860px){.hero .wrap{grid-template-columns:1fr}.fig{min-height:260px;order:-1}}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px}
+.stat b{display:block;font-family:var(--display);font-weight:500;font-size:clamp(44px,5vw,60px);line-height:1;color:var(--accent)}
+.stat span{color:var(--muted);font-size:15px}
+@media(max-width:760px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* cards */
+.grid{display:grid;gap:32px;margin-top:40px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:1000px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.card{background:var(--card);border-radius:24px;padding:32px;border-top:8px solid var(--accent)}
+.card.s{border-top-color:var(--sage)}
+.card p{color:var(--muted);margin:8px 0 0;font-size:16px}
+.card svg{width:32px;height:32px;stroke:var(--accent-text);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;margin-bottom:12px}
+.card.s svg{stroke:var(--sage-text)}
+
+/* work index */
+.index a{display:block;text-decoration:none;color:inherit;height:100%}
+.index a:hover h3{color:var(--accent-text)}
+.index .tag{font-size:14px;color:var(--sage-text);font-weight:600}
+.index .more{display:inline-block;margin-top:16px;color:var(--accent-text);font-weight:600;font-size:15px}
+
+/* case study */
+.case-head{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:48px;align-items:start}
+@media(max-width:860px){.case-head{grid-template-columns:1fr;gap:24px}}
+.facts{background:var(--card);border-radius:24px;padding:24px 32px}
+.facts dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px 20px}
+.facts dt{font-weight:600;font-size:14px;color:var(--sage-text);padding-top:2px}
+.facts dd{margin:0;font-size:16px}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;margin-top:40px}
+@media(max-width:760px){.cols{grid-template-columns:1fr}}
+.cols h3{margin-bottom:8px}
+ul.clean{margin:0;padding-left:20px}ul.clean li{margin-bottom:8px;max-width:64ch}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:40px;border-top:2px solid var(--line)}
+.steps>div{padding:24px 24px 0 0}
+.steps h3{font-size:18px;margin-bottom:8px;color:var(--accent-text)}
+.steps p{font-size:16px;color:var(--muted)}
+@media(max-width:760px){.steps{grid-template-columns:1fr}.steps>div{padding:20px 0 0}}
+.sub{font-family:var(--display);font-size:26px;margin:56px 0 0}
+
+/* timeline */
+.tl{margin-top:40px;border-left:2px solid var(--line);padding-left:28px}
+.tl>div{position:relative;padding-bottom:32px}
+.tl>div::before{content:"";position:absolute;left:-36px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--accent)}
+.tl>div.s::before{background:var(--sage)}
+.tl .when{font-size:14px;color:var(--sage-text);font-weight:600}
+.tl h3{font-size:19px;margin:4px 0 6px}
+.tl p{color:var(--muted);font-size:16px;margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;padding:0;list-style:none}
+.chips li{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:15px}
+
+/* footer */
+footer{background:var(--plum);color:#F7F2EC;position:relative;overflow:hidden}
+footer .wrap{padding:clamp(56px,7vw,96px) max(5vw,16px);position:relative;z-index:1}
+footer h2{max-width:18ch}
+footer p{color:#E6DDE8}
+footer .eyebrow{color:var(--blush)}
+footer .contact{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:40px}
+footer .contact div{border-top:1px solid #5A4A62;padding-top:16px}
+footer .contact b{display:block;font-size:14px;color:var(--blush);font-weight:600;margin-bottom:4px}
+footer .note{font-size:14px;margin-top:48px;color:#E6DDE8}
+@media(max-width:760px){footer .contact{grid-template-columns:1fr}}
+.disc{position:absolute;border-radius:50%;pointer-events:none}
+</style>
+</head>
+<body>
+
+<nav aria-label="Main">
+  <div class="wrap">
+    <a class="mark" href="#top">CRS</a>
+    <div class="links">
+      <a href="#work">Work</a>
+      <a href="#ai">AI in research</a>
+      <a href="#approach">Approach</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <p class="name"><span class="ph">Cyndy Snyder</span>, PhD</p>
+      <p class="eyebrow">Senior qualitative and mixed-methods researcher</p>
+      <h1>Turning complex human experiences into decisions teams can act on.</h1>
+      <p class="lead">15+ years leading research where the stakes are high: patients, care workers, managers and the systems around them. I design the study, run it end to end, and make sure findings change what happens next.</p>
+      <div class="cta">
+        <a class="btn primary" href="#work">See the case studies</a>
+        <a class="btn ghost" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <div class="fig" aria-hidden="true">
+      <svg viewBox="0 0 400 380" preserveAspectRatio="xMidYMid meet">
+        <circle class="orb" cx="250" cy="150" r="140" fill="#C8553D"/>
+        <circle class="orb" style="animation-delay:-3s" cx="120" cy="270" r="96" fill="#7E9C88"/>
+        <circle class="orb" style="animation-delay:-6s" cx="330" cy="300" r="56" fill="#E9B8A8"/>
+        <g fill="#F7F2EC">
+          <circle cx="210" cy="120" r="7"/><circle cx="240" cy="105" r="5"/><circle cx="262" cy="132" r="8"/><circle cx="228" cy="150" r="5"/><circle cx="285" cy="165" r="6"/><circle cx="250" cy="180" r="4"/>
+        </g>
+        <g fill="#2E2433" opacity=".55">
+          <circle cx="104" cy="258" r="6"/><circle cx="130" cy="284" r="5"/><circle cx="146" cy="252" r="4"/><circle cx="112" cy="296" r="4"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<section class="band alt" id="work">
+  <div class="wrap">
+    <h2>Selected works</h2>
+    <div class="grid g2 index">
+      <div class="card"><a href="#case-1">
+        <span class="tag">Patient experience</span>
+        <h3>Making care more responsive to multiracial patients and families</h3>
+        <p>Interviews plus asynchronous focus groups with 31 participants.</p>
+        <span class="more">Read case study</span></a></div>
+      <div class="card"><a href="#case-2">
+        <span class="tag">Employee experience</span>
+        <h3>Cutting through information overload for people managers</h3>
+        <p>Stakeholder interviews and an organization-wide manager survey.</p>
+        <span class="more">Read case study</span></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE 1 -->
+<article class="band" id="case-1">
+  <div class="wrap">
+    <p class="eyebrow">Case study 1 · Patient experience</p>
+    <div class="case-head">
+      <div>
+        <h2>Healthcare systems assumed a single race. Multiracial patients felt it.</h2>
+        <p class="lead" style="margin-top:20px">Racialized experiences in care settings affect whether patients use care, follow treatment and trust providers. Multiracial people and families show those dynamics clearly, yet they're rarely studied.</p>
+        <p><strong>The goal:</strong> identify how racial microaggressions show up in healthcare for multiracial people and families, and what would make care more inclusive.</p>
+      </div>
+      <div class="facts"><dl>
+        <dt>My role</dt><dd>Lead researcher: research plan, interviews, analysis, findings and recommendations</dd>
+        <dt>Partners</dt><dd>Stakeholder advisory committee; project manager and qualitative researcher</dd>
+        <dt>Participants</dt><dd>31 people who identify as multiracial with a healthcare visit in the past 12 months</dd>
+        <dt>Methods</dt><dd>15 moderated interviews (remote and in person); 3 asynchronous online focus groups (16 people, new prompt every 7 days)</dd>
+      </dl></div>
+    </div>
+
+    <div class="steps">
+      <div><h3>Collect</h3><p>Met people where they were: in-person interviews at locations participants chose, Zoom interviews, and an early online focus group platform.</p></div>
+      <div><h3>Analyze</h3><p>Coded open-ended responses and built themes across interviews and focus groups.</p></div>
+      <div><h3>Share</h3><p>Briefed care teams and stakeholders. Published 2 articles and gave 2 conference talks plus internal seminars.</p></div>
+    </div>
+
+    <p class="sub">What we learned</p>
+    <div class="grid g4">
+      <div class="card"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="16" cy="9" r="2.5"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6M14 14.5c3 0 6 2 6 5.5"/></svg><h3>Mistaken assumptions</h3><p>Providers and staff guessed wrong about family relationships and racial identity.</p></div>
+      <div class="card"><svg viewBox="0 0 24 24"><circle cx="9" cy="12" r="5"/><circle cx="15" cy="12" r="5"/></svg><h3>Overlapping identities</h3><p>Race combined with gender, income and ability to shape each experience.</p></div>
+      <div class="card"><svg viewBox="0 0 24 24"><path d="M4 6h16v10H8l-4 4z"/></svg><h3>Persistent stereotypes</h3><p>Participants met stereotypes about being multiracial and about people of color.</p></div>
+      <div class="card"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg><h3>Structural bias</h3><p>Everyday systems like intake forms and family imagery assumed one race.</p></div>
+    </div>
+
+    <div class="cols">
+      <div><h3>Impact</h3><ul class="clean">
+        <li>Recommendations to make patient-provider interactions more responsive to multiracial patients and people of color.</li>
+        <li>Findings set the priorities for follow-on studies of multiracial patient experience and health-seeking behavior.</li>
+      </ul></div>
+      <div><h3>What I'd carry forward</h3><ul class="clean">
+        <li>Asynchronous focus groups boosted participation and surfaced richer peer insight. That shaped how we designed later studies.</li>
+      </ul></div>
+    </div>
+    <p class="take">Small design choices, like a form field, can signal who a system was built for.</p>
+  </div>
+</article>
+
+<!-- CASE 2 -->
+<article class="band alt" id="case-2">
+  <div class="wrap">
+    <p class="eyebrow sage">Case study 2 · Employee experience</p>
+    <div class="case-head">
+      <div>
+        <h2>Managers valued the resources. They were drowning in the volume.</h2>
+        <p class="lead" style="margin-top:20px">A learning and development team needed to reach a large, diverse manager community with updates and growth opportunities. Managers were flooded with information and struggled to spot what needed action.</p>
+        <p><strong>The goal:</strong> learn how well L&amp;D communications met manager needs, and find ways to strengthen manager learning.</p>
+      </div>
+      <div class="facts"><dl>
+        <dt>My role</dt><dd>Lead researcher: defined program goals with leads; designed, ran, analyzed and reported the survey</dd>
+        <dt>Partners</dt><dd>Manager learning lead; communications team liaison</dd>
+        <dt>Participants</dt><dd>People managers across the organization</dd>
+        <dt>Methods</dt><dd>Key informant interviews to define outcomes; organization-wide online survey that also set a baseline for ongoing monitoring</dd>
+      </dl></div>
+    </div>
+
+    <div class="steps">
+      <div><h3>Collect</h3><p>Interviewed the manager learning and communications leads, then surveyed all people managers.</p></div>
+      <div><h3>Analyze</h3><p>Paired descriptive statistics with coded open-ended responses to explain the numbers.</p></div>
+      <div><h3>Share</h3><p>Presented the report and recommendations to L&amp;D leadership.</p></div>
+    </div>
+
+    <p class="sub">What we learned</p>
+    <div class="grid g3">
+      <div class="card s"><svg viewBox="0 0 24 24"><path d="M4 5h16M4 10h16M4 15h16M4 20h10"/></svg><h3>Information overload</h3><p>Managers valued the resources but felt overwhelmed by how much arrived.</p></div>
+      <div class="card s"><svg viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg><h3>What landed</h3><p>Policies, professional development, rewards, training and benefits updates worked best.</p></div>
+      <div class="card s"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="8"/></svg><h3>One central hub</h3><p>Managers wanted one home for resources, plus shorter, more targeted messages.</p></div>
+    </div>
+
+    <div class="cols">
+      <div><h3>Impact</h3><ul class="clean">
+        <li>The learning team adapted its communication approach to real manager needs.</li>
+        <li>Identified clear chances to streamline messaging and centralize manager resources.</li>
+      </ul></div>
+      <div><h3>What happened next</h3><ul class="clean">
+        <li>Set the direction for continued work on manager learning and resource development.</li>
+      </ul></div>
+    </div>
+    <p class="take">More content isn't more value. Making things easy to find is what helps.</p>
+  </div>
+</article>
+
+<!-- AI -->
+<section class="band" id="ai">
+  <div class="wrap">
+    <p class="eyebrow">AI-enabled research</p>
+    <h2>Using AI to speed up the craft while keeping humans at the center</h2>
+    <p class="lead" style="margin-top:20px">I've built tools that help researchers and partners at each stage of qualitative work, from scoping to reporting.</p>
+    <div class="grid g2">
+      <div class="card"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg><h3>Research question generator</h3><p>Turns a broad study goal into focused questions matched to the planned methods. Teams agree on scope in one session, before fieldwork starts.</p></div>
+      <div class="card"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 21h8"/></svg><h3>Qualitative research self-service site</h3><p>Plain-language methods guides, templates and sample-size calculators. Fewer repeat questions, better studies across the team.</p></div>
+      <div class="card"><svg viewBox="0 0 24 24"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="12" r="5"/></svg><h3>Custom Gemini Gems for the workflow</h3><p>Assistants for thematic analysis, codebook development, interview-question feedback and report editing. They speed up coding and synthesis so I can spend more time interpreting.</p></div>
+      <div class="card"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/></svg><h3>Guardrails I hold to</h3><p>Secure enterprise-grade tools, de-identified inputs, methods grounded in established qualitative practice, and a researcher validating every output.</p></div>
+    </div>
+    <p class="take">AI handles the repetitive work. I make the judgment calls.</p>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="band alt" id="approach">
+  <div class="wrap">
+    <p class="eyebrow sage">How I work</p>
+    <h2>The right method, the right partners, and a story leaders can act on.</h2>
+    <div class="grid g2">
+      <div class="card s"><h3>Method follows the question</h3><p>In-depth interviews, live and asynchronous focus groups, surveys, key informant interviews and document review. I choose based on what the decision needs, not habit.</p></div>
+      <div class="card s"><h3>Mixed methods by default</h3><p>I partner with biostatisticians, data scientists and data managers so the numbers show what's happening and the stories explain why.</p></div>
+      <div class="card s"><h3>Findings that travel</h3><p>Executive narratives, reports, dashboards and talks built for the audience, from senior leaders to care teams to academic peers.</p></div>
+      <div class="card s"><h3>Raising the bar for the team</h3><p>I train and mentor researchers on study design, analysis and documentation, and build repeatable workflows that improve quality and speed.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="band" id="experience">
+  <div class="wrap">
+    <p class="eyebrow sage">Experience</p>
+    <h2>Research across healthcare, tech and higher education.</h2>
+    <div class="cta" style="margin-top:24px"><a class="btn primary" href="Resume.pdf" target="_blank" rel="noopener">View résumé (PDF)</a></div>
+    <div class="tl">
+      <div><span class="when">Oct 2024 – present</span><h3>Senior Qualitative Researcher · Seattle Children's Research Institute</h3><p>Leads qualitative and mixed-methods projects, aligns stakeholders, partners with data scientists and biostatisticians, mentors staff, and guides responsible AI use in research.</p></div>
+      <div class="s"><span class="when">Mar 2022 – present</span><h3>Research and Evaluation Consultant</h3><p>Advises organizations on study design, analytics and reporting; builds protocols, codebooks and reporting templates.</p></div>
+      <div><span class="when">Jan 2019 – Mar 2022</span><h3>HR Researcher &amp; Benefits Manager · Microsoft</h3><p>Led people analytics and HR research; turned workforce data into executive narratives on wellbeing, benefits and employee experience.</p></div>
+      <div class="s"><span class="when">Mar 2015 – Jan 2019</span><h3>Health Services Researcher · University of Washington School of Medicine</h3><p>Led qualitative and mixed-methods studies of health workforce and patient experience, from design to publication; supervised research staff.</p></div>
+      <div><span class="when">2012 – 2015</span><h3>Institutional research and assessment · UW Tacoma, Seattle University</h3><p>Associate Director, Student Planning and Assessment; Assistant Director, Institutional Research.</p></div>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div><h3>Education</h3><ul class="clean" style="margin-top:8px">
+        <li>PhD, Education · University of California, Berkeley</li>
+        <li>MEd, Education · Seattle University</li>
+        <li>BA, Interdisciplinary Arts and Sciences · University of Washington</li>
+        <li>Google UX Design, AI Professional and PMP certificates · NN/g Accelerating Research with AI · IDEO U Human-Centered Service Design</li>
+      </ul></div>
+      <div><h3>Tools and skills</h3><ul class="chips">
+        <li>Mixed methods</li><li>User research</li><li>Human-centered design</li><li>AI-powered analysis</li><li>Research operations</li><li>Program evaluation</li><li>People analytics</li><li>Data visualization</li><li>ATLAS.ti</li><li>Dedoose</li><li>SPSS</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <span class="disc" style="width:420px;height:420px;right:-140px;top:-160px;background:#C8553D" aria-hidden="true"></span>
+  <span class="disc" style="width:220px;height:220px;right:180px;bottom:-120px;background:#7E9C88" aria-hidden="true"></span>
+  <div class="wrap">
+    <p class="eyebrow">Let's connect</p>
+    <h2>Great products and services start with understanding people.</h2>
+    <div class="contact">
+      <div><b>Email</b><span class="ph">cyndyrsnyder@gmail.com</span></div>
+      <div><b>LinkedIn</b><span class="ph">linkedin.com/in/cyndyrs</span></div>
+      <div><b>Location</b><span class="ph">Seattle, WA</span></div>
+    </div>
+    <p class="note">Case study details are summarized and de-identified to protect participants and partners.</p>
+  </div>
+</footer>
+
+</body>
+</html>
